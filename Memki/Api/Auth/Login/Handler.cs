@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using LinqToDB;
 using MediatR;
-using Memki.Core;
+using Memki.Core.Auth;
 using Memki.Model;
 using Memki.Model.Auth;
 using Microsoft.AspNetCore.Authentication.Cookies;

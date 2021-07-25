@@ -4,7 +4,7 @@ using System.Security.Claims;
 using Memki.AppStart;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Memki.Core
+namespace Memki.Core.Auth
 {
     public static class JwtTokenGenerator
     {
