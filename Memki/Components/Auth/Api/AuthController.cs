@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Memki.Api.Auth
+namespace Memki.Components.Auth.Api
 {
     [AllowAnonymous]
     [Route("api/[controller]")]

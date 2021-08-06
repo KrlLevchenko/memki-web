@@ -1,5 +1,8 @@
-namespace Memki.Api.Auth.Register
+using JetBrains.Annotations;
+
+namespace Memki.Components.Auth.Api.Register
 {
+    [PublicAPI]
     public class UserDto
     {
         public string Email { get; set; } = null!;

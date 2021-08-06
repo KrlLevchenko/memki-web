@@ -1,17 +1,19 @@
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using LinqToDB;
 using MediatR;
-using Memki.Core.Auth;
+using Memki.Common;
 using Memki.Model;
-using Memki.Model.Auth;
+using Memki.Model.Auth.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 
-namespace Memki.Api.Auth.Login
+namespace Memki.Components.Auth.Api.Login
 {
+    [UsedImplicitly]
     public class Handler: IRequestHandler<Request, Response>
     {
         private readonly Context _context;
@@ -43,11 +45,14 @@ namespace Memki.Api.Auth.Login
                         HttpOnly = true
                     });
                     
-                    return Response.Success(jwtToken);
+                    return new Response
+                    {
+                        Token = jwtToken
+                    };
                 }
             }
 
-            return Response.Fail();
+            return new Response();
         }
     }
 }

@@ -1,7 +1,9 @@
 using FluentValidation;
+using JetBrains.Annotations;
 
-namespace Memki.Api.Auth.Login
+namespace Memki.Components.Auth.Api.Login
 {
+    [UsedImplicitly]
     public class RequestValidator: AbstractValidator<Request>
     {
         public RequestValidator()

@@ -1,6 +1,6 @@
 ﻿using Dodo.Primitives;
 
-namespace Memki.Model.Auth
+namespace Memki.Model.Auth.Entities
 {
     public class User
     {

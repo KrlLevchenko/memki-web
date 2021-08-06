@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memki.Model", "Memki.Model\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memki.Migrator", "Memki.Migrator\Memki.Migrator.csproj", "{1229E15A-2BFA-4F89-B645-1D10483F25DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memki.IntegrationTests", "Memki.IntegrationTests\Memki.IntegrationTests.csproj", "{D3FAD96D-0444-48AF-8622-77CD9FA7243E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1229E15A-2BFA-4F89-B645-1D10483F25DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1229E15A-2BFA-4F89-B645-1D10483F25DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1229E15A-2BFA-4F89-B645-1D10483F25DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3FAD96D-0444-48AF-8622-77CD9FA7243E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3FAD96D-0444-48AF-8622-77CD9FA7243E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3FAD96D-0444-48AF-8622-77CD9FA7243E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3FAD96D-0444-48AF-8622-77CD9FA7243E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

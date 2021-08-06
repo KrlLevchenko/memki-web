@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Memki.Api.Auth.Register
+namespace Memki.Components.Auth.Api.Register
 {
     public class Request: IRequest<Response>
     {

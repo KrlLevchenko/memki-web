@@ -1,4 +1,4 @@
-namespace Memki.Api.Auth.Login
+namespace Memki.Components.Auth.Api.Login
 {
     public class Credentials
     {

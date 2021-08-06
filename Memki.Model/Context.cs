@@ -3,6 +3,7 @@ using LinqToDB;
 using LinqToDB.Data;
 using LinqToDB.Mapping;
 using Memki.Model.Auth;
+using Memki.Model.Auth.Entities;
 
 namespace Memki.Model
 {
