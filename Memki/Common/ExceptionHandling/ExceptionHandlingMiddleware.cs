@@ -41,7 +41,10 @@ namespace Memki.Common.ExceptionHandling
                     
                     context.Response.ContentType = "application/json";
                     context.Response.StatusCode = (int) handled.StatusCode;
-                    await context.Response.WriteAsync(JsonSerializer.Serialize(handled.Body));
+                    await context.Response.WriteAsync(JsonSerializer.Serialize(new
+                    {
+                        errors = handled.Errors
+                    }));
                     return;
                 }
                 _logger.LogError(e, "Unhandled exception occured");

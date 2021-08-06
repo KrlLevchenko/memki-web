@@ -13,9 +13,9 @@ namespace Memki.Components.Auth.ExceptionHandlers
         {
             if (exception is UserDuplicateException)
             {
-                return new HandleResult()
+                return new HandleResult
                 {
-                    Body = "user_already_exist",
+                    Errors = new[] {"user_already_exist"},
                     StatusCode = HttpStatusCode.Conflict
                 };
             }

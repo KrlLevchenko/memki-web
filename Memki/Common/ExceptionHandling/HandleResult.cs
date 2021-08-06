@@ -6,6 +6,6 @@ namespace Memki.Common.ExceptionHandling
     {
         public HttpStatusCode StatusCode { get; init; }
 
-        public string Body { get; init; } = "";
+        public string[] Errors { get; init; } = new string[0];
     }
 }

@@ -10,9 +10,18 @@ namespace Memki.IntegrationTests.Tests.Auth
         public async Task Should_register_user() =>
             await Runner.RunScenarioAsync(
                 given => not_authenticated(),
-                given => no_client_in_db(),
+                given => no_user_in_db(),
                 when => create_user(),
                 then => user_was_created()
+            );
+        
+        [Scenario]
+        public async Task Should_not_register_user_twice() =>
+            await Runner.RunScenarioAsync(
+                given => not_authenticated(),
+                given => user_dup_test_in_db(),
+                when => create_user_dup_test(),
+                then => got_error_about_duplicated_user()
             );
 
     }

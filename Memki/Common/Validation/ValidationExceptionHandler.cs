@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Net;
+using System.Text.Json;
 using FluentValidation;
 using JetBrains.Annotations;
 using Memki.Common.ExceptionHandling;
@@ -15,7 +17,7 @@ namespace Memki.Common.Validation
             {
                 return new HandleResult
                 {
-                    Body = "Validation message",
+                    Errors = validationException.Errors.Select(e => e.ErrorMessage).ToArray(),
                     StatusCode = HttpStatusCode.BadRequest
                 };
             }
