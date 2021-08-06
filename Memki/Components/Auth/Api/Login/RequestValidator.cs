@@ -12,7 +12,7 @@ namespace Memki.Components.Auth.Api.Login
             RuleFor(x => x.Credentials).SetValidator(new CredentialsValidator());
         }   
         
-        private class CredentialsValidator: AbstractValidator<Credentials>
+        private class CredentialsValidator: AbstractValidator<CredentialsDto>
         {
             public CredentialsValidator()
             {

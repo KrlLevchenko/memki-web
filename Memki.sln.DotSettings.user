@@ -1,11 +1,11 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4af98422_002D2e1c_002D4241_002Dab67_002D347ec8ebe9f3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_register_user #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::D3FAD96D-0444-48AF-8622-77CD9FA7243E::net5.0::Memki.IntegrationTests.Tests.Auth.WhenRegister.Should_register_user&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
+	
+	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ceec3a34_002Db096_002D4524_002Da7c0_002D3d98e5e1d405/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_register_user" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::D3FAD96D-0444-48AF-8622-77CD9FA7243E::net5.0::Memki.IntegrationTests.Tests.Auth.WhenRegister.Should_register_user&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d1f502e3_002D81e5_002D4f41_002D9746_002Db28cfcb40e7e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

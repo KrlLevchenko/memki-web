@@ -1,6 +1,6 @@
 namespace Memki.Components.Auth.Api.Login
 {
-    public class Credentials
+    public class CredentialsDto
     {
         public string Email { get; set; } = null!;
 

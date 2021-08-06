@@ -18,6 +18,7 @@ namespace Memki.Components.Auth.Api.Register
             {
                 RuleFor(x => x.Email).NotEmpty();
                 RuleFor(x => x.Password).NotEmpty();
+                RuleFor(x => x.Name).NotEmpty();
             }
         }
     }

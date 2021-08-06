@@ -44,15 +44,23 @@ namespace Memki.Components.Auth.Api.Login
                         Secure = true,
                         HttpOnly = true
                     });
-                    
+
                     return new Response
                     {
-                        Token = jwtToken
+                        UserInfo = new UserInfoDto
+                        {
+                            Name = user.Name,
+                            Email = user.Email,
+                            Token = jwtToken
+                        }
                     };
                 }
             }
 
-            return new Response();
+            return new Response
+            {
+                UserInfo = null
+            };
         }
     }
 }

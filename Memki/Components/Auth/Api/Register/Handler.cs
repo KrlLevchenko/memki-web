@@ -34,11 +34,11 @@ namespace Memki.Components.Auth.Api.Register
             }
             
             await CreateUser(request, ct);
-            var token = await GetToken(request, ct);
+            var userInfo = await GetUserInfo(request, ct);
             
             return new Response
             {
-                Token = token
+                UserInfo = userInfo
             };
         }
 
@@ -51,20 +51,25 @@ namespace Memki.Components.Auth.Api.Register
             await _context.InsertAsync(user, token: ct);
         }
 
-        private async Task<string> GetToken(Request request, CancellationToken ct)
+        private async Task<UserInfoDto> GetUserInfo(Request request, CancellationToken ct)
         {
             var loginRequest = new Login.Request
             {
-                Credentials = new Credentials
+                Credentials = new CredentialsDto
                 {
                     Email = request.UserDto.Email,
                     Password = request.UserDto.Password
                 }
             };
             var loginResponse = await _mediator.Send(loginRequest, ct);
-            if (string.IsNullOrEmpty(loginResponse.Token))
+            if (loginResponse.UserInfo == null)
                 throw new Exception("Unexpected error - cannot get token for new user");
-            return loginResponse.Token;
+            return new UserInfoDto
+            {
+                Email = loginResponse.UserInfo.Email,
+                Name = loginResponse.UserInfo.Name,
+                Token = loginResponse.UserInfo.Token,
+            };
         }
     }
 }

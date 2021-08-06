@@ -56,14 +56,20 @@ namespace Memki.IntegrationTests.Tests.Auth
         private async Task user_was_created()
         {
             var response = await _response.EnsureSuccess<Response>();
-            response.Token.Should().NotBeNull();
+            response.UserInfo.Should().NotBeNull();
+            response.UserInfo!.Email.Should().Be(_email);
+            response.UserInfo!.Name.Should().Be(_name);
+            response.UserInfo!.Token.Should().NotBeNull();
         }
 
         private async Task user_dup_test_in_db()
         {
             await using var db = GetContext();
-
-            await db.InsertAsync(new User(Uuid.NewMySqlOptimized(), "dup_test", "dup_test", null));
+            var dupUserExistInDb = await db.Users.AnyAsync(x => x.Email == _email);
+            if (!dupUserExistInDb)
+            {
+                await db.InsertAsync(new User(Uuid.NewMySqlOptimized(), "dup_test", "dup_test", null));
+            }
         }
 
         private async Task create_user_dup_test()
@@ -81,8 +87,65 @@ namespace Memki.IntegrationTests.Tests.Auth
         {
             var errors = await _response.EnsureErrors();
             errors.Should().HaveCount(1);
-
             errors.Single().Should().Be("user_already_exist");
         }
+
+        private async Task create_user_with_empty_email()
+        {
+            var body = JsonSerializer.Serialize(new UserDto
+            {
+                Email = "",
+                Name = "emptyemail_name",
+                Password = "emptyemail_password"
+            });
+            _response = await _httpClient.PostAsync("/api/auth/register", 
+                new StringContent(body, Encoding.UTF8, "application/json"));
+        }
+        
+        private async Task create_user_with_empty_name()
+        {
+            var body = JsonSerializer.Serialize(new UserDto
+            {
+                Email = "emptyname_email",
+                Name = "",
+                Password = "emptyname_password"
+            });
+            _response = await _httpClient.PostAsync("/api/auth/register", 
+                new StringContent(body, Encoding.UTF8, "application/json"));
+        }
+        
+        private async Task create_user_with_empty_password()
+        {
+            var body = JsonSerializer.Serialize(new UserDto
+            {
+                Email = "emptypassword_email",
+                Name = "emptypassword_name",
+                Password = ""
+            });
+            _response = await _httpClient.PostAsync("/api/auth/register", 
+                new StringContent(body, Encoding.UTF8, "application/json"));
+        }
+        
+        private async Task got_error_about_empty_email()
+        {
+            var errors = await _response.EnsureErrors();
+            errors.Should().HaveCount(1);
+            errors.Single().Should().Be("'Email' must not be empty.");
+        }
+        
+        private async Task got_error_about_empty_password()
+        {
+            var errors = await _response.EnsureErrors();
+            errors.Should().HaveCount(1);
+            errors.Single().Should().Be("'Password' must not be empty.");
+        }
+        
+        private async Task got_error_about_empty_name()
+        {
+            var errors = await _response.EnsureErrors();
+            errors.Should().HaveCount(1);
+            errors.Single().Should().Be("'Name' must not be empty.");
+        }
+
     }
 }
