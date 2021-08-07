@@ -1,0 +1,41 @@
+on: push
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup dotnet ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Restore
+      run: dotnet restore
+    
+    - name: Build Memki
+      run: dotnet build --configuration Release
+      working-directory: Memki
+    
+    - name: Publish Memki
+      run: dotnet publish --configuration Release
+      working-directory: Memki
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+          username: ${{ secrets.DOCKER_LOGIN }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+    - name: Get short SHA
+      id: short_sha
+      run: echo "::set-output name=sha7::$(echo ${GITHUB_SHA} | cut -c1-7)"
+   
+    - name: Build and push web
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        context: Memki
+        tags: "takayoshisimizu/memki-api:${{ steps.short_sha.outputs.sha7 }}"
